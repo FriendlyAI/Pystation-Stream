@@ -8,6 +8,20 @@ body {
   background-position: center;
 }
 
+/* Fonts */
+@font-face {
+  font-family: BasicSans-Bold;
+  src: url("../fonts/BasicSans-Bold.otf") format("opentype");
+}
+
+/* Title */
+h1 {
+  text-align: center;
+  color: #494949;
+  font-size: 200%;
+  font-family: BasicSans-Bold;
+}
+
 /* Button */
 
 input[type=button] {
