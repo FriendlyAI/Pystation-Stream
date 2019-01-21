@@ -10,7 +10,7 @@ Click `Load Unsafe Scripts` on the right edge of the address bar.
 
 ![](img/chrome_warning.png)
 
-###Firefox
+### Firefox
 Press the green padlock on the left edge of the address bar and expand the connection options.
 
 ![](img/firefox_warning_1.png)
