@@ -23,8 +23,8 @@
     </center>
 
     <script>
-        var slider = document.getElementById("volume");
-        var stream = document.getElementById("stream");
+        var slider = document.getElementById('volume');
+        var stream = document.getElementById('stream');
         stream.volume = slider.value / 100;
 
         slider.oninput = function() {
@@ -34,49 +34,47 @@
 
     <script>
         function play() {
-            var stream = document.getElementById("stream");
-            var button = document.getElementById("play_button");
+            var stream = document.getElementById('stream');
+            var button = document.getElementById('play_button');
 
             if (stream.paused) {
                 stream.load();
                 stream.play();
-                button.value = "Pause";
+                button.value = 'Pause';
             }
 
             else {
                 stream.pause();
-                button.value = "Play";
+                button.value = 'Play';
             }
         }
     </script>
 
 
     <script>
-        var stream = document.getElementById("stream");
-        var button = document.getElementById("play_button");
+        var stream = document.getElementById('stream');
+        var button = document.getElementById('play_button');
+        var title = document.getElementById('title');
 
         function playing_check() {
             setInterval(check_status, 3000);
 
             function check_status() {
                 if (stream.paused) {
-                    button.value = "Play";
+                    button.value = 'Play';
                 }
                 get_title();
             }
         }
 
         function get_title() {
-            console.log("GET TITLE");
-
-            var url = 'http://pystation.mynetgear.com/status-json.xsl';
-            var mountpoint = '/main';
-
-            $.getJSON('http://pystation.mynetgear.com/status-json.xsl', function(json) {
-                var title = document.getElementById("title");
-                title.textContent = json["icestats"]["source"].title
+            fetch('http://pystation.mynetgear.com/status-json.xsl').then(response => {
+                return response.json();
+            }).then(data => {
+                title.textContent = data['icestats']['source']['title'];
+            }).catch(err => {
+                console.log(err);
             });
-
         }
 
         window.onload = playing_check;
