@@ -6,6 +6,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  background-size: 25%;
 }
 
 /* Fonts */
@@ -20,6 +21,7 @@ h1 {
   color: #494949;
   font-size: 200%;
   font-family: BasicSans-Bold;
+  width: 60%;
 }
 
 /* Button */
