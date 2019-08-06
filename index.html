@@ -10,13 +10,14 @@
 
 <body>
     <audio id="stream" preload="none">
-        <source src="http://pystation.mynetgear.com/main.mp3"/>
+        <source src="http://pystation.mynetgear.com/main"/>
     </audio>
 
     <center>
         <h1 id="title">Loading...</h1>
         <input type="button" id="play_button" onclick="play()" value="Play">
         <br>
+        <input type="checkbox" id="autoreload" value="autoreload"> Auto-reconnect<br>
         <br>
         <div class="slidecontainer">
             <input type="range" min="0" max="100" value="80" class="slider" id="volume">
@@ -56,13 +57,18 @@
         var stream = document.getElementById('stream');
         var button = document.getElementById('play_button');
         var title = document.getElementById('title');
+        var checkbox = document.getElementById('autoreload');
 
         function playing_check() {
-            setInterval(check_status, 5000);
+        	setInterval(check_status, 500);
 
             function check_status() {
+            	console.log('checking')
                 if (stream.paused) {
                     button.value = 'Play';
+                    if (checkbox.checked) {
+                    	play()
+                    }
                 }
                 get_title();
             }

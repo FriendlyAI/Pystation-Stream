@@ -24,6 +24,13 @@ h1 {
   width: 60%;
 }
 
+/* Text */
+body {
+  font-family: BasicSans-Bold;
+  color: #494949;
+  font-size: 75%;
+}
+
 /* Button */
 
 input[type=button] {
