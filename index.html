@@ -24,6 +24,14 @@
         </div>
     </center>
 
+    <div class="bottom">
+    	<center>
+    	    <h1 id="streamer">Loading...</h1>
+    		<h2 id="genre">Loading...</h2>
+    		<h2 id="description">Loading...</h2>	
+    	</center>
+	</div>
+
     <script>
         var slider = document.getElementById('volume');
         var stream = document.getElementById('stream');
@@ -57,6 +65,9 @@
         var stream = document.getElementById('stream');
         var button = document.getElementById('play_button');
         var title = document.getElementById('title');
+        var streamer = document.getElementById('streamer')
+        var genre = document.getElementById('genre')
+        var description = document.getElementById('description')
         var checkbox = document.getElementById('autoreload');
 
         function playing_check() {
@@ -79,6 +90,9 @@
                 return response.json();
             }).then(data => {
                 title.textContent = data['icestats']['source']['title'];
+                streamer.textContent = 'Current streamer: ' + data['icestats']['source']['server_name'];
+                genre.textContent = 'Genre: ' + data['icestats']['source']['genre'];
+                description.textContent = 'Description: ' + data['icestats']['source']['server_description'];
             }).catch(err => {
                 console.log(err);
             });

@@ -19,7 +19,7 @@ body {
 h1 {
   text-align: center;
   color: #494949;
-  font-size: 200%;
+  font-size: 250%;
   font-family: BasicSans-Bold;
   width: 60%;
 }
@@ -28,7 +28,13 @@ h1 {
 body {
   font-family: BasicSans-Bold;
   color: #494949;
-  font-size: 75%;
+  font-size: 80%;
+}
+
+div.bottom {
+    position:absolute;
+    width: 100%;
+    bottom:0px;
 }
 
 /* Button */
