@@ -5,7 +5,7 @@
     <title>Pystation Radio</title>
     <link rel="icon" type="image/png" href="favicon/192.png">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="javascript/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -70,21 +70,6 @@
         var description = document.getElementById('description')
         var checkbox = document.getElementById('autoreload');
 
-        function playing_check() {
-        	setInterval(check_status, 500);
-
-            function check_status() {
-            	console.log('checking')
-                if (stream.paused) {
-                    button.value = 'Play';
-                    if (checkbox.checked) {
-                    	play()
-                    }
-                }
-                get_title();
-            }
-        }
-
         function get_title() {
             fetch('http://pystation.mynetgear.com/status-json.xsl').then(response => {
                 return response.json();
@@ -98,7 +83,30 @@
             });
         }
 
-        window.onload = playing_check;
+        function onload_helper() {
+            get_title();
+            setInterval(check_status, 500);
+            setInterval(get_title_helper, 5000);
+
+            function check_status() {
+                if (stream.paused) {
+                    button.value = 'Play';
+                    if (checkbox.checked) {
+                        play()
+                    }
+                }
+            }
+
+            function get_title_helper() {
+                get_title();
+            }
+        }
+
+        window.onload = onload_helper;
+
+        // window.onload = get_title;
+        // window.onload = playing_check;
+        // window.onload = get_title_check;
     </script>
 </body>
 </html>
