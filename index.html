@@ -43,9 +43,10 @@
     </script>
 
     <script>
+    	var stream = document.getElementById('stream');
+        var button = document.getElementById('play_button');
+        
         function play() {
-            var stream = document.getElementById('stream');
-            var button = document.getElementById('play_button');
 
             if (stream.paused) {
                 stream.load();
