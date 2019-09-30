@@ -9,6 +9,8 @@ body {
   background-size: 25%;
 }
 
+html, body {margin: 0; height: 100%; overflow: hidden}
+
 /* Fonts */
 @font-face {
   font-family: BasicSans-Bold;
